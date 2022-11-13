@@ -16,14 +16,19 @@ class Animal<Name, Childs> {
 public class Animals {
 
     static boolean checkInteger(String s) {
+
+        boolean result = true;
+
         try  {
             Integer value = Integer.parseInt(s);
-            if (value < 0) return false;
-            return true;
+            if (value < 0) result = false;
         } catch (Exception ex) {
-            return false;
+            result = false;
+        } finally {
+            return result;
         }
     }
+
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -47,7 +52,7 @@ public class Animals {
             System.out.println("Select menu: ");
 
             try {
-            menuItem = in.nextInt();
+                menuItem = in.nextInt();
             } catch (Exception ex) {
                 System.out.println("Error! Enter menu number");
                 in.nextLine();
