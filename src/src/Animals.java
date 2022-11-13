@@ -46,8 +46,13 @@ public class Animals {
             System.out.println("3. Exit");
             System.out.println("Select menu: ");
 
-
+            try {
             menuItem = in.nextInt();
+            } catch (Exception ex) {
+                System.out.println("Error! Enter menu number");
+                in.nextLine();
+                continue;
+            }
 
             switch (menuItem) {
 
