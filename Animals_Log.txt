@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-11-13T00:39:29.247004500Z</date>
+  <millis>1668299969247</millis>
+  <nanos>4500</nanos>
+  <sequence>0</sequence>
+  <logger>Animals</logger>
+  <level>INFO</level>
+  <class>Animals</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Begin work</message>
+</record>
+</log>

@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Logger;
+import java.util.logging.FileHandler;
+import java.util.logging.StreamHandler;
+import java.util.logging.SimpleFormatter;
 
 
 
@@ -21,6 +25,8 @@ class CustomNumberException extends Exception {
 
 public class Animals {
 
+    static Logger LOGGER;
+
     static boolean checkInteger(String s) {
 
         boolean result = true;
@@ -31,7 +37,7 @@ public class Animals {
         } catch (NumberFormatException ex) {
             System.out.println("Error! Enter integer number");
             result = false;
-        } catch (CustomNumberException  ex) {
+        } catch (CustomNumberException ex) {
             System.out.println(ex);
             result = false;
         } finally {
@@ -41,6 +47,22 @@ public class Animals {
 
 
     public static void main(String[] args) {
+
+        try {
+            String log_file = "Animals_Log.txt";
+
+            LOGGER = Logger.getLogger(Animals.class.getName());
+            FileHandler fh = new FileHandler(log_file);
+            LOGGER.addHandler(fh);
+
+            LOGGER.info("Begin work");
+
+            System.out.println("Log file write to "+System.getProperty("user.dir")+"\\"+log_file);
+        } catch(Exception ex) {
+            System.out.println("Error initalize log "+ex);
+        }
+
+
         Scanner in = new Scanner(System.in);
 
         ArrayList<Animal> arr = new ArrayList<>();
