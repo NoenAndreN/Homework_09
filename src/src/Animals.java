@@ -13,6 +13,12 @@ class Animal<Name, Childs> {
     }
 }
 
+class CustomNumberException extends Exception {
+    public CustomNumberException(String errorMessage) {
+        super(errorMessage);
+    }
+}
+
 public class Animals {
 
     static boolean checkInteger(String s) {
@@ -21,8 +27,12 @@ public class Animals {
 
         try  {
             Integer value = Integer.parseInt(s);
-            if (value < 0) result = false;
-        } catch (Exception ex) {
+            if (value < 0) throw new CustomNumberException("Childs number cannot be negative");
+        } catch (NumberFormatException ex) {
+            System.out.println("Error! Enter integer number");
+            result = false;
+        } catch (CustomNumberException  ex) {
+            System.out.println(ex);
             result = false;
         } finally {
             return result;
@@ -82,8 +92,6 @@ public class Animals {
                         if (checkInteger(s)) {
                             childs = Integer.parseInt(s);
                             break;
-                        } else {
-                            System.out.println("Error! Enter integer number");
                         }
                     }
 
